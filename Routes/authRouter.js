@@ -1,7 +1,7 @@
 import express from 'express'
 import { signInPOST, signUpPOST } from '../Controllers/authControllers.js'
 import { validateSchema } from '../Middlewares/validateSchema.js'
-import signInSchema from '../schemas/signInSchemaa.js/signinSchema.js'
+import signInSchema from '../schemas/signInSchema/signinSchema.js'
 import signUpSchema from '../schemas/signupSchema/signUpSchema.js'
 
 const authRouter = express.Router()
