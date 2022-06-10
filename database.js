@@ -2,6 +2,7 @@ import pg from 'pg'
 import chalk from 'chalk'
 import dotenv from 'dotenv'
 dotenv.config()
+
 const { Pool } = pg
 
 const databaseConfig = {

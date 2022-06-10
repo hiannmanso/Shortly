@@ -33,7 +33,6 @@ export async function signInPOST(req, res) {
 
 		res.status(200).send(token)
 	} catch (error) {
-		console.log(error)
 		res.status(422).send(error)
 	}
 }
