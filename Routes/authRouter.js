@@ -8,12 +8,12 @@ const authRouter = express.Router()
 
 authRouter.post(
 	'/signup',
-	// (req, res, next) => validateSchema(req, res, next, signUpSchema),
+	(req, res, next) => validateSchema(req, res, next, signUpSchema),
 	signUpPOST
 )
 authRouter.post(
 	'/signin',
-	// (req, res, next) => validateSchema(req, res, next, signInSchema),
+	(req, res, next) => validateSchema(req, res, next, signInSchema),
 	signInPOST
 )
 
