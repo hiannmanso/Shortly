@@ -20,12 +20,13 @@ export async function signInPOST(req, res) {
 	try {
 		const query = `SELECT * FROM users WHERE email = $1`
 		const user = await db.query(query, [email])
-		console.log(user.rows[0].password)
+		console.log(user)
 		if (
 			user.rowCount == 0 ||
 			!bcrypt.compareSync(password, user.rows[0].password)
-		)
+		) {
 			return res.sendStatus(401)
+		}
 
 		const newSession = `INSERT INTO sessions ("userID",token) VALUES ($1,$2)`
 		await db.query(newSession, [user.rows[0].id, token])
@@ -36,4 +37,3 @@ export async function signInPOST(req, res) {
 		res.status(422).send(error)
 	}
 }
-export async function signInGET(req, res) {}
