@@ -64,8 +64,7 @@ export async function shortenUrlGET(req, res) {
 
 export async function userShortenGET(req, res) {
 	const { id } = req.params
-	const { url } = req.body
-	const shortly = nanoid(10)
+
 	const { authorization } = req.headers
 	const token = authorization?.replace('Bearer', '').trim()
 	if (!token) return res.status(401).send(`erro em encontrar o token`)
@@ -159,7 +158,6 @@ export async function rankingGET(req, res) {
 
 		res.status(200).send(result.rows)
 	} catch (error) {
-		console.log(error)
 		res.status(400).send(error)
 	}
 }
