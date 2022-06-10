@@ -76,6 +76,13 @@ export async function userShortenGET(req, res) {
 		const user = await db.query(findUser, [token])
 		if (user.rowCount === 0) return res.sendStatus(404)
 
+		const queryVerification = `SELECT * FROM shortlys WHERE "userID" =$1`
+		const verifyDelete = await db.query(queryVerification, [id])
+		if (verifyDelete.rowCount === 0) return res.sendStatus(404)
+		if (user.rows[0].id !== verifyDelete.rows[0].userID) {
+			return res.sendStatus(401)
+		}
+
 		const query = `SELECT shortlys.*,users.name
 		FROM shortlys 
 		JOIN users
